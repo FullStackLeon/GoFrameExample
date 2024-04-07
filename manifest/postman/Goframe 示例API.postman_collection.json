@@ -1,0 +1,350 @@
+{
+	"info": {
+		"_postman_id": "a852e005-1705-416b-a799-fe8d55ed7787",
+		"name": "Goframe 示例API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26003907"
+	},
+	"item": [
+		{
+			"name": "添加普通用户",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/user/register?nickname=jack0&email=100@gmail.com&password=123456&password2=123456&account_type=regular",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"register"
+					],
+					"query": [
+						{
+							"key": "nickname",
+							"value": "jack0"
+						},
+						{
+							"key": "email",
+							"value": "100@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "123456"
+						},
+						{
+							"key": "password2",
+							"value": "123456"
+						},
+						{
+							"key": "account_type",
+							"value": "regular"
+						},
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "添加Auth用户",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/user/register?nickname=jack1&email=101@gmail.com&password=123456&password2=123456&account_type=auth",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"register"
+					],
+					"query": [
+						{
+							"key": "nickname",
+							"value": "jack1"
+						},
+						{
+							"key": "email",
+							"value": "101@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "123456"
+						},
+						{
+							"key": "password2",
+							"value": "123456"
+						},
+						{
+							"key": "account_type",
+							"value": "auth"
+						},
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "添加Admin用户",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/user/register?nickname=jack2&email=102@gmail.com&password=123456&password2=123456&account_type=admin",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"register"
+					],
+					"query": [
+						{
+							"key": "nickname",
+							"value": "jack2"
+						},
+						{
+							"key": "email",
+							"value": "102@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "123456"
+						},
+						{
+							"key": "password2",
+							"value": "123456"
+						},
+						{
+							"key": "account_type",
+							"value": "admin"
+						},
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "普通用户登录",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/user/login?email=100@gmail.com&password=123456",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "100@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "123456"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth用户登录",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/user/login?email=101@gmail.com&password=123456",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "101@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "123456"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin用户登录",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/user/login?email=102@gmail.com&password=123456",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "102@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "123456"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "普通用户Profile接口",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "SessionKeyToken",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X3R5cGUiOiJyZWd1bGFyIiwiZW1haWwiOiIxMjhAZ21haWwuY29tIiwiZXhwIjoxNzEyNTcxOTEwLCJ1c2VybmFtZSI6ImphY2sifQ.mrJw5d0H64Nen1JTg1wwEM2g479OOV5i-fHduWCGeik",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/user/profile/regular-profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"profile",
+						"regular-profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth用户Profile接口",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "SessionKeyToken",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X3R5cGUiOiJhdXRoIiwiZW1haWwiOiIxMDFAZ21haWwuY29tIiwiZXhwIjoxNzEyNTkwNzU3LCJ1c2VybmFtZSI6ImphY2sifQ.q9KQbXCx70HUIpNhAvagQ3TDxC5qQx9pDM7bcXxB0Ko",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/user/profile/auth-profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"profile",
+						"auth-profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin用户Profile接口",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "SessionKeyToken",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjEyOEBnbWFpbC5jb20iLCJleHAiOjE3MTI1NjgyMjMsInVzZXJuYW1lIjoiamFjayJ9.QmAVJCMDzUENaCzK_NmUyzbJGyNxDeYNNu5EpzU2byM",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/user/profile/admin-profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"profile",
+						"admin-profile"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
