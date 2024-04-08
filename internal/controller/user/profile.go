@@ -1,14 +1,14 @@
 package user
 
 import (
+	"context"
 	"encoding/json"
 	"net/http"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
 
-	"GoFrameExample/api"
-	v1 "GoFrameExample/api/user/v1"
+	"GoFrameExample/api/profile/v1"
 	"GoFrameExample/internal/consts"
 )
 
@@ -18,45 +18,45 @@ func NewProfile() *Profile {
 	return &Profile{}
 }
 
-func (p *Profile) RegularProfile(req *ghttp.Request) {
+func (p *Profile) RegularProfile(ctx context.Context, req *v1.RegularProfileReq) (res *v1.RegularProfileRes, err error) {
+	r := ghttp.RequestFromCtx(ctx)
 	md := g.Model("users")
-	user, err := md.Where(`email = ?`, req.Get("email")).Where(`account_type = ?`, consts.RegularAccountType).One()
+	user, err := md.Where(`email = ?`, req.Email).Where(`account_type = ?`, consts.RegularAccountType).One()
 	if err != nil {
-		req.Response.WriteStatus(http.StatusInternalServerError)
+		r.Response.WriteStatus(http.StatusInternalServerError)
 		return
 	}
 
 	if user.IsEmpty() {
-		req.Response.WriteJson(g.Map{
+		r.Response.WriteJson(g.Map{
 			"code":    consts.ErrCodeAccountNotExist,
 			"message": consts.ErrMsgAccountNotExist.Error(),
 		})
 		return
 	}
 
-	res := api.Res{
-		Code:    consts.ErrCodeSuccess,
-		Message: consts.ErrMsgSuccess.Error(),
-		Data: &v1.RegularUserProfile{
+	res = &v1.RegularProfileRes{
+		ProfileRes: v1.ProfileRes{
 			Email:       user["email"].String(),
 			Username:    user["username"].String(),
 			AccountType: user["account_type"].String(),
 		},
 	}
-	req.Response.WriteJson(res)
+
 	return
 }
 
-func (p *Profile) AuthProfile(req *ghttp.Request) {
+func (p *Profile) AuthProfile(ctx context.Context, req *v1.RegularProfileReq) (res *v1.AuthProfileRes, err error) {
+	r := ghttp.RequestFromCtx(ctx)
 	md := g.Model("users")
-	user, err := md.Where(`email = ?`, req.Get("email")).Where(`account_type = ?`, consts.AuthAccountType).One()
+	user, err := md.Where(`email = ?`, req.Email).Where(`account_type = ?`, consts.AuthAccountType).One()
 	if err != nil {
-		req.Response.WriteStatus(http.StatusInternalServerError)
+		r.Response.WriteStatus(http.StatusInternalServerError)
 		return
 	}
 
 	if user.IsEmpty() {
-		req.Response.WriteJson(g.Map{
+		r.Response.WriteJson(g.Map{
 			"code":    consts.ErrCodeAccountNotExist,
 			"message": consts.ErrMsgAccountNotExist.Error(),
 		})
@@ -66,47 +66,42 @@ func (p *Profile) AuthProfile(req *ghttp.Request) {
 	var authUserInfo v1.AuthUserInfo
 
 	_ = json.Unmarshal([]byte(user["auth_user_info"].String()), &authUserInfo)
-	res := api.Res{
-		Code:    consts.ErrCodeSuccess,
-		Message: consts.ErrMsgSuccess.Error(),
-		Data: &v1.AuthUserProfile{
-			Email:           user["email"].String(),
-			Username:        user["username"].String(),
-			AccountType:     user["account_type"].String(),
-			AuthProvider:    user["auth_provider"].String(),
-			AuthUserInfo:    authUserInfo,
-			AuthAccessToken: user["auth_access_token"].String(),
+	res = &v1.AuthProfileRes{
+		ProfileRes: v1.ProfileRes{
+			Email:       user["email"].String(),
+			Username:    user["username"].String(),
+			AccountType: user["account_type"].String(),
 		},
+		AuthProvider:    user["auth_provider"].String(),
+		AuthUserInfo:    authUserInfo,
+		AuthAccessToken: user["auth_access_token"].String(),
 	}
-	req.Response.WriteJson(res)
 	return
 }
 
-func (p *Profile) AdminProfile(req *ghttp.Request) {
+func (p *Profile) AdminProfile(ctx context.Context, req *v1.RegularProfileReq) (res *v1.AdminProfileRes, err error) {
+	r := ghttp.RequestFromCtx(ctx)
 	md := g.Model("users")
-	user, err := md.Where(`email = ?`, req.Get("email")).Where(`account_type = ?`, consts.AdminAccountType).One()
+	user, err := md.Where(`email = ?`, req.Email).Where(`account_type = ?`, consts.AdminAccountType).One()
 	if err != nil {
-		req.Response.WriteStatus(http.StatusInternalServerError)
+		r.Response.WriteStatus(http.StatusInternalServerError)
 		return
 	}
 
 	if user.IsEmpty() {
-		req.Response.WriteJson(g.Map{
+		r.Response.WriteJson(g.Map{
 			"code":    consts.ErrCodeAccountNotExist,
 			"message": consts.ErrMsgAccountNotExist.Error(),
 		})
 		return
 	}
 
-	res := api.Res{
-		Code:    consts.ErrCodeSuccess,
-		Message: consts.ErrMsgSuccess.Error(),
-		Data: &v1.AdminUserProfile{
+	res = &v1.AdminProfileRes{
+		ProfileRes: v1.ProfileRes{
 			Email:       user["email"].String(),
 			Username:    user["username"].String(),
 			AccountType: user["account_type"].String(),
 		},
 	}
-	req.Response.WriteJson(res)
 	return
 }

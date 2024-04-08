@@ -13,7 +13,7 @@ import (
 	"github.com/gogf/gf/v2/database/gdb"
 	"github.com/gogf/gf/v2/frame/g"
 
-	v1 "GoFrameExample/api/user/v1"
+	"GoFrameExample/api/profile/v1"
 )
 
 func HashStr(s string) string {

@@ -10,11 +10,24 @@ import (
 	"github.com/gogf/gf/v2/os/gsession"
 
 	"GoFrameExample/internal/consts"
+	"GoFrameExample/internal/service"
 	"GoFrameExample/utility"
 )
 
+type (
+	sMiddleware struct{}
+)
+
+func init() {
+	service.RegisterMiddleware(New())
+}
+
+func New() service.IMiddleware {
+	return &sMiddleware{}
+}
+
 // LoginCheck 中间件是登录检测，接口未传入提示未授权，如果用户
-func LoginCheck(req *ghttp.Request) {
+func (s *sMiddleware) LoginCheck(req *ghttp.Request) {
 	SessionKey := req.Cookie.Get(consts.SessionKey)
 	storage := gsession.NewStorageRedis(g.Redis())
 	sessionMap, err := storage.GetSession(req.Context(), SessionKey.String(), time.Hour*24)
@@ -43,7 +56,7 @@ func LoginCheck(req *ghttp.Request) {
 }
 
 // RouterCheck 中间件作用是路由检查，每个角色可以访问的路径存储在consts.RouterMap中
-func RouterCheck(req *ghttp.Request) {
+func (s *sMiddleware) RouterCheck(req *ghttp.Request) {
 	accountType := req.GetParam("account_type")
 	if accountType == nil {
 		req.Response.WriteStatus(http.StatusForbidden)

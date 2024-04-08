@@ -8,7 +8,7 @@ import (
 	"github.com/gogf/gf/v2/os/gcmd"
 
 	"GoFrameExample/internal/controller/user"
-	"GoFrameExample/internal/logic/middleware"
+	"GoFrameExample/internal/service"
 )
 
 var (
@@ -18,20 +18,26 @@ var (
 		Brief: "start http server",
 		Func: func(ctx context.Context, parser *gcmd.Parser) (err error) {
 			s := g.Server()
-			s.Group("/user", func(group *ghttp.RouterGroup) {
-				group.Middleware(ghttp.MiddlewareHandlerResponse)
-				group.Bind(
+			// 用户组：注册和登录相关
+			s.Group("/user", func(userGroup *ghttp.RouterGroup) {
+				userGroup.Middleware(ghttp.MiddlewareHandlerResponse)
+				userGroup.Bind(
 					user.NewUser(),
 				)
 
-				group.Group("/profile", func(group1 *ghttp.RouterGroup) {
-					group1.Middleware(ghttp.MiddlewareHandlerResponse)
-					group1.Middleware(middleware.LoginCheck, middleware.RouterCheck)
-					group1.Bind(
+				// Profile组：用户Profile相关
+				userGroup.Group("/profile", func(profileGroup *ghttp.RouterGroup) {
+					profileGroup.Middleware(
+						ghttp.MiddlewareHandlerResponse,
+						service.Middleware().LoginCheck,
+						service.Middleware().RouterCheck,
+					)
+					profileGroup.Bind(
 						user.NewProfile(),
 					)
 				})
 			})
+
 			s.Run()
 			return nil
 		},
