@@ -259,13 +259,7 @@
 			"name": "普通用户Profile接口",
 			"request": {
 				"method": "GET",
-				"header": [
-					{
-						"key": "SessionKeyToken",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X3R5cGUiOiJyZWd1bGFyIiwiZW1haWwiOiIxMjhAZ21haWwuY29tIiwiZXhwIjoxNzEyNTcxOTEwLCJ1c2VybmFtZSI6ImphY2sifQ.mrJw5d0H64Nen1JTg1wwEM2g479OOV5i-fHduWCGeik",
-						"type": "default"
-					}
-				],
+				"header": [],
 				"url": {
 					"raw": "http://127.0.0.1:8000/user/profile/regular-profile",
 					"protocol": "http",
@@ -289,14 +283,7 @@
 			"name": "Auth用户Profile接口",
 			"request": {
 				"method": "GET",
-				"header": [
-					{
-						"key": "SessionKeyToken",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X3R5cGUiOiJhdXRoIiwiZW1haWwiOiIxMDFAZ21haWwuY29tIiwiZXhwIjoxNzEyNTkwNzU3LCJ1c2VybmFtZSI6ImphY2sifQ.q9KQbXCx70HUIpNhAvagQ3TDxC5qQx9pDM7bcXxB0Ko",
-						"type": "default",
-						"disabled": true
-					}
-				],
+				"header": [],
 				"url": {
 					"raw": "http://127.0.0.1:8000/user/profile/auth-profile",
 					"protocol": "http",
@@ -320,13 +307,7 @@
 			"name": "Admin用户Profile接口",
 			"request": {
 				"method": "GET",
-				"header": [
-					{
-						"key": "SessionKeyToken",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjEyOEBnbWFpbC5jb20iLCJleHAiOjE3MTI1NjgyMjMsInVzZXJuYW1lIjoiamFjayJ9.QmAVJCMDzUENaCzK_NmUyzbJGyNxDeYNNu5EpzU2byM",
-						"type": "default"
-					}
-				],
+				"header": [],
 				"url": {
 					"raw": "http://127.0.0.1:8000/user/profile/admin-profile",
 					"protocol": "http",

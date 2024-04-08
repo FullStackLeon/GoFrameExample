@@ -19,6 +19,11 @@ func LoginCheck(req *ghttp.Request) {
 	storage := gsession.NewStorageRedis(g.Redis())
 	sessionMap, err := storage.GetSession(req.Context(), SessionKey.String(), time.Hour*24)
 	if err != nil {
+		req.Response.WriteStatus(http.StatusInternalServerError)
+		return
+	}
+
+	if sessionMap == nil {
 		req.Response.WriteStatus(http.StatusUnauthorized)
 		return
 	}
