@@ -14,7 +14,11 @@
 
 - 数据库名: goframe
 - 用户表名: users
-- 存储位置: manifest/sql/users.sql
+- 表定义存储位置: manifest/sql/users.sql
+- database配置存储位置: manifest/config/config.yaml
+
+##### Redis缓存说明
+- redis配置存储位置: manifest/config/config.yaml
 
 ##### Postman测试
 
