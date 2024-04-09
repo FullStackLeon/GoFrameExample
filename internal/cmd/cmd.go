@@ -7,6 +7,7 @@ import (
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gcmd"
 
+	"GoFrameExample/internal/controller/profile"
 	"GoFrameExample/internal/controller/user"
 	"GoFrameExample/internal/service"
 )
@@ -33,7 +34,7 @@ var (
 						service.Middleware().RouterCheck,
 					)
 					profileGroup.Bind(
-						user.NewProfile(),
+						profile.NewProfile(),
 					)
 				})
 			})
