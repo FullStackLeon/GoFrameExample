@@ -261,7 +261,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/user/profile/regular-profile",
+					"raw": "http://127.0.0.1:8000/user/profile/regular",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -273,7 +273,7 @@
 					"path": [
 						"user",
 						"profile",
-						"regular-profile"
+						"regular"
 					]
 				}
 			},
@@ -285,7 +285,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/user/profile/auth-profile",
+					"raw": "http://127.0.0.1:8000/user/profile/auth",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -297,7 +297,7 @@
 					"path": [
 						"user",
 						"profile",
-						"auth-profile"
+						"auth"
 					]
 				}
 			},
@@ -309,7 +309,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/user/profile/admin-profile",
+					"raw": "http://127.0.0.1:8000/user/profile/admin",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -321,7 +321,7 @@
 					"path": [
 						"user",
 						"profile",
-						"admin-profile"
+						"admin"
 					]
 				}
 			},

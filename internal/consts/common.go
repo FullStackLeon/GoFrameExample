@@ -2,12 +2,12 @@ package consts
 
 var RouterMap = map[string][]string{
 	RegularAccountType: {
-		"/user/profile/regular-profile",
+		"/user/profile/regular",
 	},
 	AuthAccountType: {
-		"/user/profile/auth-profile",
+		"/user/profile/auth",
 	},
 	AdminAccountType: {
-		"/user/profile/admin-profile",
+		"/user/profile/admin",
 	},
 }

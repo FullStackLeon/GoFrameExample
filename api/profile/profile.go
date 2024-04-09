@@ -11,7 +11,7 @@ import (
 )
 
 type IProfileV1 interface {
-	RegularProfile(ctx context.Context, req *v1.RegularProfileReq) (res *v1.RegularProfileRes, err error)
-	AuthProfile(ctx context.Context, req *v1.AuthProfileReq) (res *v1.AuthProfileRes, err error)
-	AdminProfile(ctx context.Context, req *v1.AdminProfileReq) (res *v1.AdminProfileRes, err error)
+	Regular(ctx context.Context, req *v1.RegularReq) (res *v1.RegularRes, err error)
+	Auth(ctx context.Context, req *v1.AuthReq) (res *v1.AuthRes, err error)
+	Admin(ctx context.Context, req *v1.AdminReq) (res *v1.AdminRes, err error)
 }

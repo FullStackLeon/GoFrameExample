@@ -9,6 +9,6 @@ import (
 	"GoFrameExample/api/profile/v1"
 )
 
-func (c *ControllerV1) AdminProfile(ctx context.Context, req *v1.AdminProfileReq) (res *v1.AdminProfileRes, err error) {
+func (c *ControllerV1) AdminProfile(ctx context.Context, req *v1.AdminReq) (res *v1.AdminRes, err error) {
 	return nil, gerror.NewCode(gcode.CodeNotImplemented)
 }

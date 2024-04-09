@@ -18,7 +18,7 @@ func NewProfile() *Profile {
 	return &Profile{}
 }
 
-func (p *Profile) RegularProfile(ctx context.Context, req *v1.RegularProfileReq) (res *v1.RegularProfileRes, err error) {
+func (p *Profile) Regular(ctx context.Context, req *v1.RegularReq) (res *v1.RegularRes, err error) {
 	r := ghttp.RequestFromCtx(ctx)
 	md := g.Model("users")
 	user, err := md.Where(`email = ?`, req.Email).Where(`account_type = ?`, consts.RegularAccountType).One()
@@ -35,7 +35,7 @@ func (p *Profile) RegularProfile(ctx context.Context, req *v1.RegularProfileReq)
 		return
 	}
 
-	res = &v1.RegularProfileRes{
+	res = &v1.RegularRes{
 		ProfileRes: v1.ProfileRes{
 			Email:       user["email"].String(),
 			Username:    user["username"].String(),
@@ -46,7 +46,7 @@ func (p *Profile) RegularProfile(ctx context.Context, req *v1.RegularProfileReq)
 	return
 }
 
-func (p *Profile) AuthProfile(ctx context.Context, req *v1.RegularProfileReq) (res *v1.AuthProfileRes, err error) {
+func (p *Profile) Auth(ctx context.Context, req *v1.RegularReq) (res *v1.AuthRes, err error) {
 	r := ghttp.RequestFromCtx(ctx)
 	md := g.Model("users")
 	user, err := md.Where(`email = ?`, req.Email).Where(`account_type = ?`, consts.AuthAccountType).One()
@@ -66,7 +66,7 @@ func (p *Profile) AuthProfile(ctx context.Context, req *v1.RegularProfileReq) (r
 	var authUserInfo v1.AuthUserInfo
 
 	_ = json.Unmarshal([]byte(user["auth_user_info"].String()), &authUserInfo)
-	res = &v1.AuthProfileRes{
+	res = &v1.AuthRes{
 		ProfileRes: v1.ProfileRes{
 			Email:       user["email"].String(),
 			Username:    user["username"].String(),
@@ -79,7 +79,7 @@ func (p *Profile) AuthProfile(ctx context.Context, req *v1.RegularProfileReq) (r
 	return
 }
 
-func (p *Profile) AdminProfile(ctx context.Context, req *v1.RegularProfileReq) (res *v1.AdminProfileRes, err error) {
+func (p *Profile) Admin(ctx context.Context, req *v1.RegularReq) (res *v1.AdminRes, err error) {
 	r := ghttp.RequestFromCtx(ctx)
 	md := g.Model("users")
 	user, err := md.Where(`email = ?`, req.Email).Where(`account_type = ?`, consts.AdminAccountType).One()
@@ -96,7 +96,7 @@ func (p *Profile) AdminProfile(ctx context.Context, req *v1.RegularProfileReq) (
 		return
 	}
 
-	res = &v1.AdminProfileRes{
+	res = &v1.AdminRes{
 		ProfileRes: v1.ProfileRes{
 			Email:       user["email"].String(),
 			Username:    user["username"].String(),
