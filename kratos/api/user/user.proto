@@ -1,0 +1,66 @@
+syntax = "proto3";
+package api.user;
+
+option go_package = "kratos/api/user;user";
+option java_multiple_files = true;
+option java_package = "api.user";
+
+service UserService {
+	rpc CreateUser (CreateUserRequest) returns (CreateUserReply);
+	rpc UpdateUser (UpdateUserRequest) returns (UpdateUserReply);
+	rpc DeleteUser (DeleteUserRequest) returns (DeleteUserReply);
+	rpc GetUser (GetUserRequest) returns (GetUserReply);
+	rpc ListUser (ListUserRequest) returns (ListUserReply);
+}
+
+message CreateUserRequest {
+	string username = 1;
+  string password = 2;
+	string email = 3;
+  string phone = 4;
+}
+message CreateUserReply {
+	uint64 id = 1;
+  string username = 2;
+  string email = 3;
+}
+
+message UpdateUserRequest {
+	uint64 id = 1;
+  string username = 2;
+}
+message UpdateUserReply {
+	uint64 id = 1;
+  string username = 2;
+}
+
+message DeleteUserRequest {
+	string id = 1;
+}
+message DeleteUserReply {
+	string id = 1;
+}
+
+message GetUserRequest {
+	uint64 id = 1;
+}
+message GetUserReply {
+	uint64 id = 1;
+  string username = 2;
+  string email = 3;
+	string phone = 4;
+}
+
+message ListUserRequest {
+	repeated int32 ids = 1;
+}
+
+message User {
+	uint64 id = 1;
+	string username = 2;
+	string email = 3;
+	string phone = 4;
+}
+message ListUserReply {
+	repeated User users = 1;
+}

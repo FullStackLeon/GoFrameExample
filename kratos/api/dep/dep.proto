@@ -1,0 +1,58 @@
+syntax = "proto3";
+package api.dep;
+
+option go_package = "kratos/api/dep;dep";
+option java_multiple_files = true;
+option java_package = "api.dep";
+
+service DepService {
+	rpc CreateDep (CreateDepRequest) returns (CreateDepReply);
+	rpc UpdateDep (UpdateDepRequest) returns (UpdateDepReply);
+	rpc DeleteDep (DeleteDepRequest) returns (DeleteDepReply);
+	rpc GetDep (GetDepRequest) returns (GetDepReply);
+	rpc ListDep (ListDepRequest) returns (ListDepReply);
+}
+
+message CreateDepRequest {
+	string name = 1;
+	string num = 2;
+}
+message CreateDepReply {
+	uint32 id = 1;
+}
+
+message UpdateDepRequest {
+	uint32 id = 1;
+  string name = 2;
+}
+message UpdateDepReply {
+	uint32 id = 1;
+}
+
+message DeleteDepRequest {
+	uint32 id = 1;
+}
+message DeleteDepReply {
+	string id = 1;
+}
+
+message GetDepRequest {
+	uint32 id = 1;
+}
+message GetDepReply {
+	uint32 id = 1;
+  string name = 2;
+	uint32 num = 3;
+}
+
+message Dep {
+	uint32 id = 1;
+  string name = 2;
+  uint32 num = 3;
+}
+message ListDepRequest {
+	repeated uint32 ids = 1;
+}
+message ListDepReply {
+	repeated Dep dep = 1;
+}
